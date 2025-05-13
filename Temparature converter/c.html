@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="c.css"> 
+    <title>Thermo</title>
+</head>
+<body>
+    <div class="converter-container">
+        <h1>THERMO</h1>
+        <div class="input-group">
+            <label for="temperature">Enter Temperature Value:</label>
+            <input type="text" id="temperature" placeholder="e.g., 25, 77, 298.15">
+            <p id="error-message" class="error-message"></p>
+        </div>
+        <div class="input-group">
+            <label for="unit">Choose Input Unit:</label>
+            <select id="unit">
+                <option value="Celsius">Celsius (°C)</option>
+                <option value="Fahrenheit">Fahrenheit (°F)</option>
+                <option value="Kelvin">Kelvin (K)</option>
+            </select>
+        </div>
+        <button onclick="convertTemperature()">Convert</button>
+        <div id="result-container"></div>
+    </div>
+    <script>
+        function convertTemperature() {
+            const temperatureInput = document.getElementById("temperature");
+            const unitSelect = document.getElementById("unit");
+            const resultContainer = document.getElementById("result-container");
+            const temperatureValue = temperatureInput.value.trim();
+
+            let convertedTemperature = {};
+            let resultText = "Converted to: ";
+            let hasError = false;
+
+            if (!/^-?\d+(\.\d+)?$/.test(temperatureValue)) {
+                errorMessage.textContent = "Oops! Please enter a valid number for the temperature.";
+                resultContainer.textContent = "";
+                hasError = true;
+            } else {
+                const numTemperature = parseFloat(temperatureValue);
+                const selectedUnit = unitSelect.value;
+
+                if (selectedUnit === "Celsius") {
+                    convertedTemperature.fahrenheit = (numTemperature * 9 / 5) + 32;
+                    convertedTemperature.kelvin = numTemperature + 273.15;
+                    resultText += `${convertedTemperature.fahrenheit.toFixed(2)} °F, ${convertedTemperature.kelvin.toFixed(2)} K`;
+                } else if (selectedUnit === "Fahrenheit") {
+                    convertedTemperature.celsius = (numTemperature - 32) * 5 / 9;
+                    convertedTemperature.kelvin = (numTemperature + 459.67) * 5 / 9;
+                    resultText += `${convertedTemperature.celsius.toFixed(2)} °C, ${convertedTemperature.kelvin.toFixed(2)} K`;
+                } else if (selectedUnit === "Kelvin") {
+                    convertedTemperature.celsius = numTemperature - 273.15;
+                    convertedTemperature.fahrenheit = (numTemperature - 273.15) * 9 / 5 + 32;
+                    resultText += `${convertedTemperature.celsius.toFixed(2)} °C, ${convertedTemperature.fahrenheit.toFixed(2)} °F`;
+                } else {
+                    resultText = "Error: Please select a valid input unit.";
+                    hasError = true;
+                }
+            }
+
+            resultContainer.textContent = resultText;
+
+            if (hasError) {
+                resultContainer.style.color = "#dc3545";
+                resultContainer.style.fontWeight = "normal";
+            } else {
+                resultContainer.style.color = "#28a745";
+                resultContainer.style.fontWeight = "bold";
+            }
+        }
+    </script>
+</body>
+</ht
