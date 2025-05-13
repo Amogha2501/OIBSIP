@@ -279,9 +279,6 @@ a:hover {
     transform: translateX(-50%);
 }
 
-.project-toggle-input:checked ~ .project-summary .toggle-icon::after {
-    transform: translateX(-50%) rotate(90deg);
-}
 
 .project-details-content {
     background-color: #fefefe;
@@ -380,4 +377,33 @@ a:hover {
     padding: 20px 0;
     font-size: 0.9em;
     margin-top: 60px;
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .project-summary {
+        flex-wrap: wrap;
+    }
+
+    .project-summary img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+
+    .summary-info {
+        width: 100%;
+    }
+
+    .skills-list {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .skill-category {
+        width: 100%;
+    }
 }

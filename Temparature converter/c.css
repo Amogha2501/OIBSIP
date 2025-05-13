@@ -1,26 +1,29 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A more modern font */
+    font-family: 'Segoe UI', Tahoma,Verdana, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px; 
-    padding: 30px;
-    background-color: #ff481e; 
+    gap: 25px;
+    padding: 20px;
+    background-color: #ff481e;
     background-image: url("https://www.mypunepulse.com/wp-content/uploads/2023/10/Pune-Weather-Update-1024x538.webp");
     background-repeat: no-repeat;
-    background-size:cover;
-    position:center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 .converter-container {
     background-color: #f5f2f2;
-    padding: 30px;
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 350px;
+    width: 90%;
+    max-width: 350px;
     text-align: center;
+    margin: 0 auto;
 }
 h1 {
     color: #333;
@@ -44,27 +47,72 @@ input[type="text"], select {
     font-size: 1em;
 }
 button {
-    background-color: #007bff; 
+    background-color: #007bff;
     color: white;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1em;
-    transition: background-color 0.3s ease; 
+    transition: background-color 0.3s ease;
 }
 button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
 #result-container {
     font-size: 1.2em;
     font-weight: bold;
-    color: #28a745; /* A friendly green for the result */
+    color: #28a745;
     padding: 15px;
-    background-color: #e9ecef; /* Light grey background for the result */
+    background-color: #e9ecef;
     border-radius: 4px;
 }
 .error-message {
-    color: #dc3545; /* A clear red for errors */
+    color: #dc3545;
     font-size: 0.9em;
+}
+@media (max-width: 480px) {
+    body {
+        padding: 10px 0;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-attachment: scroll;
+    }
+
+    .converter-container {
+        width: 95%;
+        padding: 20px;
+        gap: 15px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: 1.6em;
+        margin-bottom: 10px;
+    }
+
+    .input-group {
+        gap: 6px;
+    }
+
+    label {
+        font-size: 1em;
+    }
+
+    input[type="text"],
+    select,
+    button {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    #result-container {
+        font-size: 1.1em;
+        padding: 10px;
+    }
 }
